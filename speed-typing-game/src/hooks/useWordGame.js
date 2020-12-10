@@ -8,7 +8,7 @@ function useWordGame(startingTime = 10) {
   const textBoxRef = useRef(null);
 
   function handleChange(e) {
-    const [value] = e.target;
+    const { value } = e.target;
     setText(value);
   }
 

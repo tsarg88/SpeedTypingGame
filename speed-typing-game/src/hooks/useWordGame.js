@@ -36,9 +36,9 @@ function useWordGame(startingTime = 10) {
         setTimeRemaining((time) => time - 1);
       }, 1000);
     } else if (timeRemaining === 0) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       return endGame();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeRemaining, isTimeRunning]);
 
   return {

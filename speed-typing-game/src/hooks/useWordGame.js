@@ -6,11 +6,15 @@ function useWordGame(startingTime = 10) {
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const textBoxRef = useRef(null);
+  const [time, setTime] = useState();
 
-  function handleChange(e) {
-    const { value } = e.target;
-    setText(value);
-  }
+  //   function handleChange(event) {
+  //     // console.log("something");
+  //     const { name, value } = event.target;
+  //     // setTimeRemaining(event.target.value)
+  //     setText(value);
+  //     setTimeRemaining({ [name]: value });
+  //   }
 
   function calculateWordCount(text) {
     const wordArr = text.trim().split(" ");
@@ -19,7 +23,7 @@ function useWordGame(startingTime = 10) {
 
   function startGame() {
     setIsTimeRunning(true);
-    setTimeRemaining(startingTime);
+    setTimeRemaining(timeRemaining > 0 ? timeRemaining : startingTime);
     setText("");
     textBoxRef.current.disabled = false;
     textBoxRef.current.focus();
@@ -43,12 +47,15 @@ function useWordGame(startingTime = 10) {
 
   return {
     textBoxRef,
-    handleChange,
     text,
     isTimeRunning,
     timeRemaining,
     startGame,
     wordCount,
+    time,
+    setTime,
+    setText,
+    setTimeRemaining,
   };
 }
 export default useWordGame;
